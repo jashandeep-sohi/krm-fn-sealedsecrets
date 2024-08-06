@@ -32,8 +32,9 @@
 
       perSystem = { config, self', inputs', pkgs, system, ... }:
       let
-        version = with inputs; "${self.shortRev or self.dirtyShortRev or "unknown"}";
-        homepage = "https://github.com/jashandeep-sohi/krm-fn-sealedsecrets";
+        versionFile = import ./version.nix;
+        version = with inputs; "${versionFile.name or self.shortRev or self.dirtyShortRev or "unknown"}";
+        homepage = versionFile.url or "https://github.com/jashandeep-sohi/krm-fn-sealedsecrets";
         buildGoCmd = { pname, cmd }: inputs'.gomod2nix.legacyPackages.buildGoApplication {
           inherit pname version;
           src = pkgs.lib.cleanSource ./.;
