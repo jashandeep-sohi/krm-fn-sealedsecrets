@@ -25,7 +25,7 @@ The API is a limited subset of the `kubeseal` CLI with some added features.
 To seal secrets use the `ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/seal` function image.
 
 It takes in a stream of `v1.Secrets` and generates `SealedSecrets` for each of them.
-Configure it using a [ConfigMap]().
+Configure it using a [ConfigMap](https://pkg.go.dev/github.com/jashandeep-sohi/krm-fn-sealedsecrets@v0/pkg/seal#ConfigMapData).
 
 ### KPT
 
@@ -225,7 +225,7 @@ See this for a more [complete example]().
 To unseal `SealedSecrets` use the `ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/unseal` function image.
 
 It takes in a stream of `SealedSecrets` and generates `v1.SealedSecret` for each of them.
-Configure it using a [ConfigMap]().
+Configure it using a [ConfigMap](https://pkg.go.dev/github.com/jashandeep-sohi/krm-fn-sealedsecrets@v0/pkg/unseal#ConfigMapData).
 
 
 For example, with KPT you can run (subtitute `<controller-name>` with the namespace that sealed-secrets controller is running in):
