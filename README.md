@@ -216,7 +216,7 @@ You can do that by emmiting stub v1.Secrets along with the SealedSecret:
 kpt fn eval --image ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/seal:latest -- "cert=$(kubeseal --fetch-cert)" nameSuffixHash=t emmitKustomizeStubSecrets=t
 ```
 
-See this for a more [complete example]().
+Checkout a more [complete example](./examples/seal-suffix-hash-name-ref).
 
 **Note**: This is a hack that relies on annotations that are **internal** to Kustomize. There is no guarntee this will work with all version of Kustomize and may break at any time.
 
