@@ -1,3 +1,5 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/jashandeep-sohi/krm-fn-sealedsecrets.svg)](https://pkg.go.dev/github.com/jashandeep-sohi/krm-fn-sealedsecrets)
+
 # krm-fn-sealedsecrets
 
 [KRM Functions](https://github.com/kubernetes-sigs/kustomize/blob/master/cmd/config/docs/api-conventions/functions-spec.md)
