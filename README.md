@@ -22,7 +22,7 @@ The API is a limited subset of the `kubeseal` CLI with some added features.
 
 ## Seal
 
-To seal secrets use the `ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/seal` function image.
+To seal secrets, use the `ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/seal` function image.
 
 It takes in a stream of `v1.Secrets` and generates `SealedSecrets` for each of them.
 Configure it using a [ConfigMap](https://pkg.go.dev/github.com/jashandeep-sohi/krm-fn-sealedsecrets@v0/pkg/seal#ConfigMapData).
