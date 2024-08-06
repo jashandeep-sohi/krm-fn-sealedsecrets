@@ -1,0 +1,23 @@
+name: Build Contianers
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  build:
+    concurrency:
+      group: container
+      
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: "write"
+      contents: "read"
+      packages: write
+      
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - run: nix run .#sealContainer.copyTo --impure -- --dst-username ${{ github.actor}} --dst-password '${{ secrets.GITHUB_TOKEN }}' docker://ghcr.io/${{ github.repository }}/seal
+      - run: nix run .#unsealContainer.copyTo --impure -- --dst-username ${{ github.actor}} --dst-password '${{ secrets.GITHUB_TOKEN }}' docker://ghcr.io/${{ github.repository }}/unseal
