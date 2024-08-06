@@ -206,11 +206,11 @@ kpt fn eval --image ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/seal:latest -- 
 
 ### Kustomize Stub Secrets
 
-When using Kustomize, you might have some references to Secrets in other
+When using Kustomize, you might have some references to `Secrets` in other
 resources (e.g. `Pod.spec.containers.envFrom.secretsRef.name`) that'd you'd like to
 be updated when the name changes because of `nameSuffixHash=true`.
 
-You can do that by emmiting stub v1.Secrets along with the SealedSecret:
+You can do that by emmiting stub `v1.Secrets` along with the `SealedSecret`:
 
 ```shell
 kpt fn eval --image ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/seal:latest -- "cert=$(kubeseal --fetch-cert)" nameSuffixHash=t emmitKustomizeStubSecrets=t
