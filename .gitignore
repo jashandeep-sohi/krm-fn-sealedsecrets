@@ -1,0 +1,4 @@
+.devenv
+.pre-commit-config.yaml
+seal
+unseal
