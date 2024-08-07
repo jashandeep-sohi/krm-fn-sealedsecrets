@@ -5,7 +5,7 @@ to update any name references in other resources (like Deployments, Pods, etc).
 
 # Setup
 
-There are two `Secrets` in `secret-a.yaml` and `secret-b.yaml` in plain-text that are
+There are two `Secrets` in `secret-one.yaml` and `secret-two.yaml` in plain-text that are
 referenced by a`Deployment` in `deploy.yaml`.
 
 We'd like those reference names to change
