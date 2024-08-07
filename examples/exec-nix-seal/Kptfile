@@ -1,0 +1,10 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: kpt-seal
+  annotations:
+    config.kubernetes.io/local-config: "true"
+pipeline:
+  mutators:
+    - exec: nix run github:jashandeep-sohi/krm-fn-sealedsecrets#seal
+      configPath: ./fn-config.yaml
