@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: does-not-matter
 data:
+  # WARNING: This is only done as an example. Never check-in these keys to Git.
   controllerPrivateKeys: |-
     -----BEGIN PRIVATE KEY-----
     MIIJQgIBADANBgkqhkiG9w0BAQEFAASCCSwwggkoAgEAAoICAQDy4ju04H5cofL6
