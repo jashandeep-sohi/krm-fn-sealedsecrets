@@ -10,13 +10,9 @@ import (
 )
 
 func main() {
-	if err := fn.AsMain(fn.ResourceListProcessorFunc(process)); err != nil {
+	fn.Logf(fmt.Sprintf("krm-fn-sealedsecets-unseal (version=%s, url=%s)", version.Name, version.URL))
+
+	if err := fn.AsMain(fn.ResourceListProcessorFunc(unseal.Process)); err != nil {
 		os.Exit(1)
 	}
-}
-
-func process(rl *fn.ResourceList) (bool, error) {
-	rl.Results.Infof(fmt.Sprintf("krm-fn-sealedsecets-unseal (version=%s, url=%s)", version.Name, version.URL))
-
-	return unseal.Process(rl)
 }
