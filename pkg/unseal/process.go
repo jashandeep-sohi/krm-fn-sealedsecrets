@@ -7,8 +7,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/jashandeep-sohi/krm-fn-sealedsecrets/pkg/types"
-	"github.com/jashandeep-sohi/krm-fn-sealedsecrets/pkg/utils"
+	"github.com/jashandeep-sohi/krm-fn-sealedsecrets/pkg/common"
 
 	"github.com/GoogleContainerTools/kpt-functions-sdk/go/fn"
 	"github.com/bitnami-labs/sealed-secrets/pkg/crypto"
@@ -21,7 +20,7 @@ import (
 )
 
 const (
-	UnsealedAnnotation = types.AnnotationPrefix + "unsealed"
+	UnsealedAnnotation = common.AnnotationPrefix + "unsealed"
 )
 
 func Process(rl *fn.ResourceList) (bool, error) {
@@ -124,7 +123,7 @@ func Process(rl *fn.ResourceList) (bool, error) {
 		rl.Results.Infof("unsealed %s (path=%s)", s.ShortString(), s.PathAnnotation())
 	}
 
-	err = utils.NormalizeIndexAnnotation(rl)
+	err = common.NormalizeIndexAnnotation(rl)
 	if err != nil {
 		return false, err
 	}

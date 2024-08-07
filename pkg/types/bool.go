@@ -5,10 +5,6 @@ import (
 	"strconv"
 )
 
-const (
-	AnnotationPrefix = "krm-fn-sealedsecrets.io/"
-)
-
 type Bool bool
 
 func (b *Bool) UnmarshalJSON(data []byte) error {
