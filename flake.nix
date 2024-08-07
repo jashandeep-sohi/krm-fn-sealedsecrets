@@ -37,7 +37,7 @@
         homepage = versionFile.url or "https://github.com/jashandeep-sohi/krm-fn-sealedsecrets";
         buildGoCmd = { pname, cmd }: inputs'.gomod2nix.legacyPackages.buildGoApplication {
           inherit pname version;
-          src = pkgs.lib.cleanSource ./.;
+          src = with pkgs.lib; sourceFilesBySuffices (cleanSource ./.) [ ".go" "go.mod" "go.sum" "gomod2nix.toml" ];
           modules = ./gomod2nix.toml;
           subPackages = [ "cmd/${cmd}" ];
           postInstall = ''
