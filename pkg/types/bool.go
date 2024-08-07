@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	AnnotationPrefix = "v1alpha1.krm-fn-sealedsecrets.io/"
+	AnnotationPrefix = "krm-fn-sealedsecrets.io/"
 )
 
 type Bool bool
