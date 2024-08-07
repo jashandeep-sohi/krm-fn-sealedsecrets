@@ -247,4 +247,4 @@ You can also run this function locally (i.e. without any of the restrictions & s
 kpt fn eval --exec 'nix run github:jashandeep-sohi/krm-fn-sealedsecrets/seal' ...
 ```
 
-See ./examples/exec-nix-seal/ on how to do it declaratively.
+See [./examples/exec-nix-seal/](./examples/exec-nix-seal/) on how to do it declaratively.
