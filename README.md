@@ -216,10 +216,24 @@ You can do that by emmiting stub `v1.Secrets` along with the `SealedSecret`:
 kpt fn eval --image ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/seal:latest -- "cert=$(kubeseal --fetch-cert)" nameSuffixHash=t emmitKustomizeStubSecrets=t
 ```
 
-Checkout a more [complete example](./examples/seal-suffix-hash-name-ref).
+Checkout a more [complete example](./examples/kpt-seal-stub-secrets).
 
 **Note**: This is a hack that relies on annotations that are **internal** to Kustomize. There is no guarntee this will work with all version of Kustomize and may break at any time.
 
+### Name Reference Kustomization
+
+If you'd rather not rely on "internal" Kustomize annotation APIs that could
+break at anytime, you can also get name references to work by using the `nameRefKustomizationDir` option.
+
+When provided, this will generate a Kustomization to that directory that can be sourced by other Kustomizations
+to patch any name references:
+
+
+```shell
+kpt fn eval --image ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/seal:latest -- "cert=$(kubeseal --fetch-cert)" nameSuffixHash=t nameRefKustomizationDir=fix-secret-refs
+```
+
+See [this for a practical example](./examples/kpt-seal-name-ref-kustomization).
 
 ## Unseal
 

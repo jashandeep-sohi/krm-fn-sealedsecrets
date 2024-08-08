@@ -36,4 +36,9 @@ type ConfigMapData struct {
 	// Note: This is a hack that relies on annotations that are **internal** to Kustomize. There is no
 	// guarntee this will work with all version of Kustomize and may break at any time.
 	EmmitKustomizeStubSecrets types.Bool `json:"emmitKustomizeStubSecrets,omitempty"`
+
+	// NameRefKustomizationDir, when provided, will generate a Kustomization to that directory that
+	// can be sourced by other Kustomizations to correct any name references to secrets generated.
+	// Everything in this directory is wiped, every run.
+	NameRefKustomizationDir *string `json:"nameRefKustomizationDir,omitempty"`
 }
