@@ -5,11 +5,12 @@ Create clone of this package to test it out:
 
 ```shell
 rm -rf test/ && kpt fn source | kpt fn sink test/ && pushd test/
-``
+```
 
 Notice that the `Deployment` refernces the two `Secrets` using their pre-hashed names:
 
 ```yaml
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
