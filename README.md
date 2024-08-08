@@ -24,14 +24,14 @@ The API is a limited subset of the `kubeseal` CLI with some added features.
 
 To seal secrets, use the `ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/seal` function image.
 
-It takes in a stream of `v1.Secrets` and generates `SealedSecrets` for each of them.
-Configure it using a [ConfigMap](https://pkg.go.dev/github.com/jashandeep-sohi/krm-fn-sealedsecrets/pkg/seal#ConfigMap).
+It takes a list of `v1.Secrets` and generates `SealedSecrets` for each of them.
+Configure it using this [ConfigMap](https://pkg.go.dev/github.com/jashandeep-sohi/krm-fn-sealedsecrets/pkg/seal#ConfigMap).
 
 ### KPT
 
 It can be used both imperatively and declaratively with [KPT](https://kpt.dev/).
 
-For example, given you have a bunch of `Secrets`:
+For example, given a bunch of `Secrets`:
 
 ```shell
 cat <<EOF > secret-a.yaml
@@ -55,7 +55,7 @@ stringData:
 EOF
 ```
 
-To seal it, run:
+To seal them, run:
 
 ```shell
 kpt fn eval --image ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/seal:latest -- "cert=$(kubeseal --fetch-cert)"
@@ -237,11 +237,10 @@ See [this for a practical example](./examples/kpt-seal-name-ref-kustomization).
 
 ## Unseal
 
-To unseal `SealedSecrets` use the `ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/unseal` function image.
+To unseal `SealedSecrets`, use the `ghcr.io/jashandeep-sohi/krm-fn-sealedsecrets/unseal` function image.
 
-It takes in a stream of `SealedSecrets` and generates `v1.SealedSecret` for each of them.
-Configure it using a [ConfigMap](https://pkg.go.dev/github.com/jashandeep-sohi/krm-fn-sealedsecrets/pkg/unseal#ConfigMap).
-
+It takes in a list of `SealedSecrets` and generates `v1.SealedSecret` for each of them.
+Configure it using this [ConfigMap](https://pkg.go.dev/github.com/jashandeep-sohi/krm-fn-sealedsecrets/pkg/unseal#ConfigMap).
 
 For example, with KPT you can run (subtitute `<controller-name>` with the namespace that sealed-secrets controller is running in):
 
