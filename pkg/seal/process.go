@@ -192,10 +192,16 @@ func generateNameRefKustomization(rl *fn.ResourceList, dir string) error {
 			k.SetNestedStringSlice([]string{"resources.yaml"}, "resources"),
 			k.SetNestedStringSlice([]string{"transformers.yaml"}, "transformers"),
 		)
+	} else {
+		err = errors.Join(
+			k.SetNestedStringSlice([]string{}, "resources"),
+			k.SetNestedStringSlice([]string{}, "transformers"),
+		)
 
-		if err != nil {
-			return err
-		}
+	}
+
+	if err != nil {
+		return err
 	}
 
 	err = rl.UpsertObjectToItems(k, neverEqual, true)
