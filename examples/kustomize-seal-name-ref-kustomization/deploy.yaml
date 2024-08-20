@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy
+  namespace: test
+spec:
+  template:
+    spec:
+      containers:
+      - name: container
+        envFrom:
+        - secretRef:
+            name: secret-one
+        - secretRef:
+            name: secret-two
